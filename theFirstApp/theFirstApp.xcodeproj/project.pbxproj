@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		37AD137547E1DDE9449592AD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D05B106A7A6D29B275AAC2 /* libPods.a */; };
+		721084681B61273100A58374 /* WHWeatherNetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 721084671B61273100A58374 /* WHWeatherNetworkingTool.m */; };
+		7210846E1B61348A00A58374 /* WHWeatherResposeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210846D1B61348A00A58374 /* WHWeatherResposeEntity.m */; };
+		722078BF1B6121E2003B3011 /* WHWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 722078BE1B6121E2003B3011 /* WHWeather.m */; };
+		7268E50B1B5FEC0600846C93 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268E50A1B5FEC0600846C93 /* libsqlite3.dylib */; };
+		7268E50F1B5FEC8E00846C93 /* WHWeatherDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7268E50E1B5FEC8E00846C93 /* WHWeatherDBTool.m */; };
 		E7CC311E1B5F1ECD00E5A5D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC311D1B5F1ECD00E5A5D1 /* main.m */; };
 		E7CC31211B5F1ECD00E5A5D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC31201B5F1ECD00E5A5D1 /* AppDelegate.m */; };
 		E7CC31291B5F1ECD00E5A5D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7CC31281B5F1ECD00E5A5D1 /* Images.xcassets */; };
@@ -196,6 +201,15 @@
 /* Begin PBXFileReference section */
 		1677977E8D5F72FE788A2A1A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		48D05B106A7A6D29B275AAC2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		721084661B61273100A58374 /* WHWeatherNetworkingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeatherNetworkingTool.h; sourceTree = "<group>"; };
+		721084671B61273100A58374 /* WHWeatherNetworkingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherNetworkingTool.m; sourceTree = "<group>"; };
+		7210846C1B61348A00A58374 /* WHWeatherResposeEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeatherResposeEntity.h; sourceTree = "<group>"; };
+		7210846D1B61348A00A58374 /* WHWeatherResposeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherResposeEntity.m; sourceTree = "<group>"; };
+		722078BD1B6121E2003B3011 /* WHWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeather.h; sourceTree = "<group>"; };
+		722078BE1B6121E2003B3011 /* WHWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeather.m; sourceTree = "<group>"; };
+		7268E50A1B5FEC0600846C93 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		7268E50D1B5FEC8E00846C93 /* WHWeatherDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeatherDBTool.h; sourceTree = "<group>"; };
+		7268E50E1B5FEC8E00846C93 /* WHWeatherDBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherDBTool.m; sourceTree = "<group>"; };
 		8C06D71C4B26FDBA4CC63EEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E7CC31181B5F1ECD00E5A5D1 /* theFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CC311C1B5F1ECD00E5A5D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -393,6 +407,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7268E50B1B5FEC0600846C93 /* libsqlite3.dylib in Frameworks */,
 				37AD137547E1DDE9449592AD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,9 +422,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7268E50C1B5FEC5C00846C93 /* ToolClasses */ = {
+			isa = PBXGroup;
+			children = (
+				7268E50D1B5FEC8E00846C93 /* WHWeatherDBTool.h */,
+				7268E50E1B5FEC8E00846C93 /* WHWeatherDBTool.m */,
+				721084661B61273100A58374 /* WHWeatherNetworkingTool.h */,
+				721084671B61273100A58374 /* WHWeatherNetworkingTool.m */,
+			);
+			name = ToolClasses;
+			sourceTree = "<group>";
+		};
 		73116FC5AFB178BDB69DD706 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7268E50A1B5FEC0600846C93 /* libsqlite3.dylib */,
 				48D05B106A7A6D29B275AAC2 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -552,6 +579,10 @@
 		E7CC31731B5F3B0300E5A5D1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				722078BD1B6121E2003B3011 /* WHWeather.h */,
+				722078BE1B6121E2003B3011 /* WHWeather.m */,
+				7210846C1B61348A00A58374 /* WHWeatherResposeEntity.h */,
+				7210846D1B61348A00A58374 /* WHWeatherResposeEntity.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -598,6 +629,7 @@
 		E7CC318F1B5F4B3100E5A5D1 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7268E50C1B5FEC5C00846C93 /* ToolClasses */,
 				E7CC31901B5F4B4E00E5A5D1 /* Category */,
 			);
 			name = Other;
@@ -1567,6 +1599,10 @@
 				E7CC31431B5F221000E5A5D1 /* WHTabBarViewController.m in Sources */,
 				E7CC330A1B5F7D9C00E5A5D1 /* WHScanViewController.m in Sources */,
 				E7CC31501B5F2D9A00E5A5D1 /* WHBadgeButton.m in Sources */,
+				7268E50F1B5FEC8E00846C93 /* WHWeatherDBTool.m in Sources */,
+				7210846E1B61348A00A58374 /* WHWeatherResposeEntity.m in Sources */,
+				722078BF1B6121E2003B3011 /* WHWeather.m in Sources */,
+				721084681B61273100A58374 /* WHWeatherNetworkingTool.m in Sources */,
 				E7CC31961B5F4D4300E5A5D1 /* UIBarButtonItem+WWH.m in Sources */,
 				E7CC314A1B5F233600E5A5D1 /* WHTabBar.m in Sources */,
 				E7CC318C1B5F40C100E5A5D1 /* WHMapViewController.m in Sources */,
