@@ -11,7 +11,7 @@
 @interface WHWeatherNetworkingTool : NSObject
 
 
-@property (nonatomic , copy) NSString *JSONStr;
+//@property (nonatomic , copy) NSMutableString *JSONStr;
 
 
 /**

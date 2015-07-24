@@ -48,12 +48,16 @@ static FMDatabase *_db;
     return weathers;
 }
 
+
 - (WHWeather *)weather:(NSArray *)JSONStrArray
 {
     NSString *str = [JSONStrArray lastObject];
     WHWeatherResposeEntity *weatherResposeEntity = [WHWeatherResposeEntity objectWithKeyValues:str ];
+    
+    WHWeather *weather = [WHWeather objectWithKeyValues:weatherResposeEntity.retData];
+
 #warning mark 7.23 night
-    return nil;
+    return weather;
 }
 
 @end

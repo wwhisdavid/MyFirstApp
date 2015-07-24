@@ -7,30 +7,35 @@
 //
 
 #import "WHWeatherNetworkingTool.h"
+#import "WHWeatherDBTool.h"
+
 @implementation WHWeatherNetworkingTool
 
-
-
 - (NSString *)JSONStrWithRequest:(NSString *)httpUrl andHttpArg:(NSString *)httpArg
-{   _JSONStr = [NSString string];
+{
     NSString *urlStr = [[NSString alloc] initWithFormat:@"%@?%@",httpUrl,httpArg ];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"GET"];
     [request addValue:@"5d3bf69215c9a2c4265d8dddd000f0d7" forHTTPHeaderField:@"apikey"];
+    
+    __block NSMutableString *str = nil;
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError) {
             WHLog(@"Httperror:%@%ld",connectionError.localizedDescription, connectionError.code);
-            _JSONStr = @"111111";
+            str = [NSMutableString stringWithString:@"111111"];
+            [WHWeatherDBTool initialize];
+            [WHWeatherDBTool addWeatherJSONStr:str];
         }
         else{
             NSInteger responseCode = [(NSHTTPURLResponse *)response statusCode];
             NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             WHLog(@"HttpResponseCode:%ld", responseCode);
             WHLog(@"HttpresponseString:%@", responseString);
-            _JSONStr = responseString;
-         
-            
+            str = [NSMutableString stringWithString:responseString];
+            [WHWeatherDBTool initialize];
+            [WHWeatherDBTool addWeatherJSONStr:str];
             
             //            NSLog(@"HttpResponseBody %@",responseString);
 //            NSDictionary *weatherDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -47,7 +52,9 @@
             //            NSLog(@"%@",weather.city);
         }
     }];
-    return _JSONStr;
+    
+
+    return nil;
     
 }
 
