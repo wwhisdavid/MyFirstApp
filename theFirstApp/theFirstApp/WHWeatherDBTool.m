@@ -32,6 +32,7 @@ static FMDatabase *_db;
     [_db executeUpdateWithFormat:@"INSERT INTO t_weather(string) VALUES (%@);",JSONStr];
 }
 
+
 - (NSArray *)weathers
 {
     //得到结果集
@@ -43,10 +44,14 @@ static FMDatabase *_db;
         //获得当前所指向数据
         NSString *str = [NSString string];
         str = [set stringForColumn:@"string"];
-        [weathers addObject:str];
+        WHWeatherResposeEntity *tempWeatherResponse = [WHWeatherResposeEntity objectWithKeyValues:str];
+        WHWeather *tempWeather = [WHWeather objectWithKeyValues:tempWeatherResponse.retData];
+        [weathers addObject:tempWeather];
     }
     return weathers;
 }
+
+
 
 
 - (WHWeather *)weather:(NSArray *)JSONStrArray
@@ -56,8 +61,11 @@ static FMDatabase *_db;
     
     WHWeather *weather = [WHWeather objectWithKeyValues:weatherResposeEntity.retData];
 
-#warning mark 7.23 night
     return weather;
 }
 
+- (void)closeDB
+{
+    [_db close];
+}
 @end

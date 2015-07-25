@@ -13,6 +13,8 @@
 		722078BF1B6121E2003B3011 /* WHWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 722078BE1B6121E2003B3011 /* WHWeather.m */; };
 		7268E50B1B5FEC0600846C93 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268E50A1B5FEC0600846C93 /* libsqlite3.dylib */; };
 		7268E50F1B5FEC8E00846C93 /* WHWeatherDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7268E50E1B5FEC8E00846C93 /* WHWeatherDBTool.m */; };
+		E7C791961B635ED200F02480 /* WHBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C791951B635ED200F02480 /* WHBaseTableViewCell.m */; };
+		E7C791991B6365C300F02480 /* WHWeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C791981B6365C300F02480 /* WHWeatherCell.m */; };
 		E7CC311E1B5F1ECD00E5A5D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC311D1B5F1ECD00E5A5D1 /* main.m */; };
 		E7CC31211B5F1ECD00E5A5D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CC31201B5F1ECD00E5A5D1 /* AppDelegate.m */; };
 		E7CC31291B5F1ECD00E5A5D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7CC31281B5F1ECD00E5A5D1 /* Images.xcassets */; };
@@ -211,6 +213,10 @@
 		7268E50D1B5FEC8E00846C93 /* WHWeatherDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeatherDBTool.h; sourceTree = "<group>"; };
 		7268E50E1B5FEC8E00846C93 /* WHWeatherDBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherDBTool.m; sourceTree = "<group>"; };
 		8C06D71C4B26FDBA4CC63EEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E7C791941B635ED200F02480 /* WHBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHBaseTableViewCell.h; sourceTree = "<group>"; };
+		E7C791951B635ED200F02480 /* WHBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHBaseTableViewCell.m; sourceTree = "<group>"; };
+		E7C791971B6365C300F02480 /* WHWeatherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeatherCell.h; sourceTree = "<group>"; };
+		E7C791981B6365C300F02480 /* WHWeatherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherCell.m; sourceTree = "<group>"; };
 		E7CC31181B5F1ECD00E5A5D1 /* theFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CC311C1B5F1ECD00E5A5D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7CC311D1B5F1ECD00E5A5D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -451,6 +457,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E7C791931B635EA500F02480 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E7C791941B635ED200F02480 /* WHBaseTableViewCell.h */,
+				E7C791951B635ED200F02480 /* WHBaseTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		E7CC310F1B5F1ECD00E5A5D1 = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +555,7 @@
 		E7CC31461B5F22FE00E5A5D1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E7C791931B635EA500F02480 /* Cells */,
 				E7CC31481B5F233600E5A5D1 /* WHTabBar.h */,
 				E7CC31491B5F233600E5A5D1 /* WHTabBar.m */,
 				E7CC314B1B5F278C00E5A5D1 /* WHTabBarButton.h */,
@@ -590,6 +606,8 @@
 		E7CC31741B5F3B0800E5A5D1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E7C791971B6365C300F02480 /* WHWeatherCell.h */,
+				E7C791981B6365C300F02480 /* WHWeatherCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1598,10 +1616,12 @@
 				E7CC31931B5F4BD400E5A5D1 /* UIImage+ResizedImage.m in Sources */,
 				E7CC31431B5F221000E5A5D1 /* WHTabBarViewController.m in Sources */,
 				E7CC330A1B5F7D9C00E5A5D1 /* WHScanViewController.m in Sources */,
+				E7C791991B6365C300F02480 /* WHWeatherCell.m in Sources */,
 				E7CC31501B5F2D9A00E5A5D1 /* WHBadgeButton.m in Sources */,
 				7268E50F1B5FEC8E00846C93 /* WHWeatherDBTool.m in Sources */,
 				7210846E1B61348A00A58374 /* WHWeatherResposeEntity.m in Sources */,
 				722078BF1B6121E2003B3011 /* WHWeather.m in Sources */,
+				E7C791961B635ED200F02480 /* WHBaseTableViewCell.m in Sources */,
 				721084681B61273100A58374 /* WHWeatherNetworkingTool.m in Sources */,
 				E7CC31961B5F4D4300E5A5D1 /* UIBarButtonItem+WWH.m in Sources */,
 				E7CC314A1B5F233600E5A5D1 /* WHTabBar.m in Sources */,

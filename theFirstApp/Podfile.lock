@@ -4,17 +4,23 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
   - MJExtension (2.5.2)
+  - MJRefresh (2.3.2)
 
 DEPENDENCIES:
   - FMDB (~> 2.5)
+  - Masonry (~> 0.6.2)
   - MBProgressHUD (~> 0.9.1)
   - MJExtension (~> 2.5.2)
+  - MJRefresh (~> 2.3.2)
 
 SPEC CHECKSUMS:
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJExtension: 73e812aca0846e4a7b4d7aca34cfacf48d1f3310
+  MJRefresh: 0f6f5e8387970607c26080b44058b229a23065d7
 
 COCOAPODS: 0.37.2

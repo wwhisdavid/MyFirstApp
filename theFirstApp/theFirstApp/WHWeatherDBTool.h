@@ -12,18 +12,28 @@
 @interface WHWeatherDBTool : NSObject
 
 /**
- *  从数据库获得存有天气的weather的json的stringArray
+ *  从数据库获得存有天气的jsonstr并转为weather对象，放进数组返回
  */
 - (NSArray *)weathers;
+
 /**
  *  将json的string存入数据库
  */
 + (void)addWeatherJSONStr:(NSString *)JSONStr;
-
 
 /**
  *  提供方法传入JSONStr数组，返回对应对象
  */
 - (WHWeather *)weather:(NSArray *)JSONStrArray;
 
+/**
+ *  清空数据库
+ */
+
+
+/**
+ *  关闭数据库
+ */
+- (void)closeDB;
 @end
+
