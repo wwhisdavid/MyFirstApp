@@ -11,6 +11,8 @@
 		721084681B61273100A58374 /* WHWeatherNetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 721084671B61273100A58374 /* WHWeatherNetworkingTool.m */; };
 		7210846E1B61348A00A58374 /* WHWeatherResposeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210846D1B61348A00A58374 /* WHWeatherResposeEntity.m */; };
 		722078BF1B6121E2003B3011 /* WHWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 722078BE1B6121E2003B3011 /* WHWeather.m */; };
+		725C55F91B63B536007396B7 /* WHWeatherCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 725C55F81B63B536007396B7 /* WHWeatherCity.m */; };
+		725C55FC1B63B683007396B7 /* WHAddWeatherCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725C55FB1B63B683007396B7 /* WHAddWeatherCityViewController.m */; };
 		7268E50B1B5FEC0600846C93 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268E50A1B5FEC0600846C93 /* libsqlite3.dylib */; };
 		7268E50F1B5FEC8E00846C93 /* WHWeatherDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7268E50E1B5FEC8E00846C93 /* WHWeatherDBTool.m */; };
 		E7C791961B635ED200F02480 /* WHBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C791951B635ED200F02480 /* WHBaseTableViewCell.m */; };
@@ -209,6 +211,10 @@
 		7210846D1B61348A00A58374 /* WHWeatherResposeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherResposeEntity.m; sourceTree = "<group>"; };
 		722078BD1B6121E2003B3011 /* WHWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeather.h; sourceTree = "<group>"; };
 		722078BE1B6121E2003B3011 /* WHWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeather.m; sourceTree = "<group>"; };
+		725C55F71B63B536007396B7 /* WHWeatherCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeatherCity.h; sourceTree = "<group>"; };
+		725C55F81B63B536007396B7 /* WHWeatherCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherCity.m; sourceTree = "<group>"; };
+		725C55FA1B63B683007396B7 /* WHAddWeatherCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHAddWeatherCityViewController.h; sourceTree = "<group>"; };
+		725C55FB1B63B683007396B7 /* WHAddWeatherCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHAddWeatherCityViewController.m; sourceTree = "<group>"; };
 		7268E50A1B5FEC0600846C93 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7268E50D1B5FEC8E00846C93 /* WHWeatherDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeatherDBTool.h; sourceTree = "<group>"; };
 		7268E50E1B5FEC8E00846C93 /* WHWeatherDBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherDBTool.m; sourceTree = "<group>"; };
@@ -588,6 +594,8 @@
 			children = (
 				E7CC31751B5F3B4A00E5A5D1 /* WHWeatherViewController.h */,
 				E7CC31761B5F3B4A00E5A5D1 /* WHWeatherViewController.m */,
+				725C55FA1B63B683007396B7 /* WHAddWeatherCityViewController.h */,
+				725C55FB1B63B683007396B7 /* WHAddWeatherCityViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -597,6 +605,8 @@
 			children = (
 				722078BD1B6121E2003B3011 /* WHWeather.h */,
 				722078BE1B6121E2003B3011 /* WHWeather.m */,
+				725C55F71B63B536007396B7 /* WHWeatherCity.h */,
+				725C55F81B63B536007396B7 /* WHWeatherCity.m */,
 				7210846C1B61348A00A58374 /* WHWeatherResposeEntity.h */,
 				7210846D1B61348A00A58374 /* WHWeatherResposeEntity.m */,
 			);
@@ -1617,6 +1627,7 @@
 				E7CC31431B5F221000E5A5D1 /* WHTabBarViewController.m in Sources */,
 				E7CC330A1B5F7D9C00E5A5D1 /* WHScanViewController.m in Sources */,
 				E7C791991B6365C300F02480 /* WHWeatherCell.m in Sources */,
+				725C55F91B63B536007396B7 /* WHWeatherCity.m in Sources */,
 				E7CC31501B5F2D9A00E5A5D1 /* WHBadgeButton.m in Sources */,
 				7268E50F1B5FEC8E00846C93 /* WHWeatherDBTool.m in Sources */,
 				7210846E1B61348A00A58374 /* WHWeatherResposeEntity.m in Sources */,
@@ -1628,6 +1639,7 @@
 				E7CC318C1B5F40C100E5A5D1 /* WHMapViewController.m in Sources */,
 				E7CC317A1B5F3E6600E5A5D1 /* WHNavigationController.m in Sources */,
 				E7CC31211B5F1ECD00E5A5D1 /* AppDelegate.m in Sources */,
+				725C55FC1B63B683007396B7 /* WHAddWeatherCityViewController.m in Sources */,
 				E7CC311E1B5F1ECD00E5A5D1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

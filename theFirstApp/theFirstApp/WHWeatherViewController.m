@@ -7,6 +7,7 @@
 //
 
 #import "WHWeatherViewController.h"
+#import "WHAddWeatherCityViewController.h"
 #import "UIBarButtonItem+WWH.h"
 #import "WHWeatherDBTool.h"
 #import "WHWeatherNetworkingTool.h"
@@ -14,6 +15,8 @@
 #import "WHWeatherCell.h"
 #import "MJRefresh.h"
 
+// 文件路径
+#define WHWeatherCityFilepath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"weatherCities.data"]
 
 @interface WHWeatherViewController()
 
@@ -26,6 +29,8 @@
 
 @implementation WHWeatherViewController
 
+#pragma mark - life circle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,7 +38,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     //左边侧边栏
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"burger" highlightIcon:@"burger" target:self action:@selector(testScanf)];
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(testScanf)];
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
     UIBarButtonItem *delItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteClick)];
     
     self.navigationItem.rightBarButtonItems = @[addItem,delItem];
@@ -45,6 +50,22 @@
     // 马上进入刷新状态
     [self.tableView.header beginRefreshing];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+/**
+ *  添加城市
+ */
+- (void)addClick
+{
+    WHAddWeatherCityViewController *addVc = [[WHAddWeatherCityViewController alloc] init];
+    [self.navigationController pushViewController:addVc animated:YES];
+    self.tabBarController.tabBar.hidden = YES;
+}
+
 /**
  *  删除
  */
@@ -110,10 +131,24 @@
  */
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //1.删除模型数据
+        [self.weatherArray removeObjectAtIndex:indexPath.row];
+        //2.刷新表格（局部）
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    }
+}
 
+/**
+ *  实现这个方法确定每行操作方式。
+ */
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark ---- datasource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.weatherArray.count;
@@ -125,5 +160,7 @@
     cell.weatherModel = self.weatherArray[indexPath.row];
     return cell;
 }
+
+
 
 @end
