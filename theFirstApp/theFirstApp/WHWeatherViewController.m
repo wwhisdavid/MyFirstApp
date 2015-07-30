@@ -133,9 +133,11 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //1.删除模型数据
-        [self.weatherArray removeObjectAtIndex:indexPath.row];
+        [_weatherArray removeObjectAtIndex:indexPath.row];
+        WHLog(@"%d",indexPath.row);
         //2.刷新表格（局部）
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        
     }
 }
 
@@ -148,6 +150,11 @@
 }
 
 #pragma mark ---- datasource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
