@@ -4,27 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-FMDB.xcscheme</key>
+		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MBProgressHUD.xcscheme</key>
+		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MJExtension.xcscheme</key>
+		<key>MJExtension.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MJRefresh.xcscheme</key>
+		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Masonry.xcscheme</key>
+		<key>MMDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>44C6CB779C0AD84B72AD7B97</key>
+		<key>10517D961136E210851759B8F31718A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E87A3C00F529C7AC0D25D31</key>
+		<key>6D359E5CB05D6C6C232E0F23E5E60D71</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>83FA15E558F10588E4477B28</key>
+		<key>CC87B77250082A4B352798BE4A4C2385</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A904E1156E9CD385BFE0C68</key>
+		<key>CF1CF689621E9037B6AE4AC4FC374ED5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C149995095C60E9ED434BF99</key>
+		<key>D2BE044970DCCE893D7DCBE7D8F2FE95</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E8DB942155B1713060A52E13</key>
+		<key>E17FF4A0379EF2ADD94520A942687CCE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE1AD3B05BA10416C7DD91F0846F4A4B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

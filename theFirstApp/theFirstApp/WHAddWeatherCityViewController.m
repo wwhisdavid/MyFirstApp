@@ -38,7 +38,7 @@
 
 - (void)initViewController
 {
-    self.view.backgroundColor = WHColor(236, 115, 6, 1.0);
+    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"添加城市";
     
     [self setupAllChildViews];
@@ -64,7 +64,8 @@
     
     UILabel *cityTitle = [[UILabel alloc] init];
     cityTitle.text = @"城市名 :";
-    cityTitle.textColor = [UIColor whiteColor];
+    cityTitle.textAlignment = NSTextAlignmentRight;
+    cityTitle.textColor = WHColor(229, 149, 97, 1.0);
     cityTitle.font = [UIFont systemFontOfSize:16.0];
     cityTitle.backgroundColor = [UIColor clearColor];
     [self.bgScrollView addSubview:cityTitle];
@@ -72,7 +73,9 @@
     
     UITextField *cityTextField = [[UITextField alloc] init];
     cityTextField.placeholder = @"请输入您要添加的城市";
-    cityTextField.font = [UIFont systemFontOfSize:16.0];
+    cityTextField.font = [UIFont systemFontOfSize:14.0];
+    [cityTextField.layer setBorderWidth:1.0];
+    [cityTextField.layer setBorderColor:WHColor(229, 149, 97, 1.0).CGColor];
     cityTextField.layer.cornerRadius = 5.0;
     cityTextField.clipsToBounds = YES;
     [cityTextField setBackgroundColor:[UIColor whiteColor]];
@@ -83,8 +86,8 @@
     sureBtn.layer.cornerRadius = 5.0;
     sureBtn.clipsToBounds = YES;
     [sureBtn setTitle:@"确 定" forState:UIControlStateNormal];
-    sureBtn.titleLabel.textColor = WHColor(221, 138, 78, 1.0);
-    [sureBtn setBackgroundColor:[UIColor whiteColor]];
+    sureBtn.titleLabel.textColor = [UIColor whiteColor];
+    [sureBtn setBackgroundColor:WHColor(229, 149, 97, 1.0)];
     [self.bgScrollView addSubview:sureBtn];
     self.sureBtn = sureBtn;
     [self.sureBtn addTarget:self action:@selector(sureBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -110,7 +113,7 @@
     [self.cityTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(ws.cityTextField);
         make.height.equalTo(ws.cityTextField);
-        make.right.equalTo(ws.cityTextField.mas_left);
+        make.right.equalTo(ws.cityTextField.mas_left).with.offset(- 10.0);
         make.width.mas_equalTo(80.0);
     }];
     

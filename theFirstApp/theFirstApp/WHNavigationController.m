@@ -17,6 +17,8 @@
     self.navigationBar.barTintColor = WHColor(229, 139, 79, 0.8);
     self.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor whiteColor],
                                                UITextAttributeFont : [UIFont boldSystemFontOfSize:18]};
+    
+    
 }
 
 @end

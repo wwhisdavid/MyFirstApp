@@ -20,6 +20,7 @@ static FMDatabase *_db;
 {
     //1.打开数据库
     NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"weathers.sqlite"];
+    WHLog(@"%@-----------------",path);
     _db = [FMDatabase databaseWithPath:path];
     [_db open];
     
@@ -32,6 +33,13 @@ static FMDatabase *_db;
     [_db executeUpdateWithFormat:@"INSERT INTO t_weather(string) VALUES (%@);",JSONStr];
 }
 
++ (void)deleteWeatherJSONStrWithID:(NSString *)ID
+{
+    NSString *sql1 = [NSString stringWithFormat:@"DELETE FROM t_weather WHERE id = %@;", ID];
+    [_db executeUpdate:sql1];
+    NSString *sql2 = [NSString stringWithFormat:@"UPDATE t_weather SET id = id - 1 WHERE id > %@;", ID];
+    [_db executeUpdate:sql2];
+}
 
 - (NSArray *)weathers
 {

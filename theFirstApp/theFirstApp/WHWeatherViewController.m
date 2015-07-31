@@ -111,7 +111,6 @@
 
 - (NSMutableArray *)weatherArray
 {
-
     WHWeatherDBTool *DBTool = [[WHWeatherDBTool alloc] init];
     _weatherArray = [NSMutableArray arrayWithArray:[DBTool weathers]];
     return _weatherArray;
@@ -132,12 +131,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //1.删除模型数据
+       
+        //1.删除模型数据,注意，要到数据库删除。
         [_weatherArray removeObjectAtIndex:indexPath.row];
-        WHLog(@"%d",indexPath.row);
+        NSString *str = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
+        [WHWeatherDBTool deleteWeatherJSONStrWithID:str];
+        
         //2.刷新表格（局部）
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
-        
     }
 }
 

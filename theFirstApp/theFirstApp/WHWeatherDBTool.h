@@ -27,9 +27,9 @@
 - (WHWeather *)weather:(NSArray *)JSONStrArray;
 
 /**
- *  清空数据库
+ *  删除一条数据
  */
-
++ (void)deleteWeatherJSONStrWithID:(NSString *)ID;
 
 /**
  *  关闭数据库

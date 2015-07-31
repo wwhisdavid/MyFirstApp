@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "WHTabBarViewController.h"
+#import "MMDrawerController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -18,9 +20,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     application.statusBarHidden = NO;
     
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[WHTabBarViewController alloc] init];
+    WHTabBarViewController *tbVC = [[WHTabBarViewController alloc] init];
+    UIViewController *vc = [[UIViewController alloc] init];
+    
+    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:tbVC leftDrawerViewController:vc];
+    drawerController.view.backgroundColor = [UIColor whiteColor];
+    [drawerController setMaximumRightDrawerWidth:200];
+    [drawerController setMaximumLeftDrawerWidth:200];
+    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    self.window.rootViewController = drawerController;
     [self.window makeKeyAndVisible];
+
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     return YES;
