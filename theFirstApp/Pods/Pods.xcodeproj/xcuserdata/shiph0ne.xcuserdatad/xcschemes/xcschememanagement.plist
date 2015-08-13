@@ -39,40 +39,50 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ZXingObjC.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2BDF3265DE84B29382B0397146F6B04F</key>
+		<key>18111C149D8073AB2CE83BB039230D04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>55754F5919D6133621451445A88244BD</key>
+		<key>82A5773F19B3DED678D4A33F2F6A9BA2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6512B7149BDC1918B9F9330B33413AA6</key>
+		<key>9B7079F8CCCA4FEC05E36BFF7B8F0BC4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>87043E5CBFD40FFE0A063AC3D2615D37</key>
+		<key>9F0AFAE7C0273F5F6325BE28AB6E98ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>928010A367AD482599636E8D374ADFCA</key>
+		<key>A726051BEA51F195B3363E42E0BF3545</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E69F713C40EF0B5E0640BDCE89AB4D56</key>
+		<key>AFC59F6BC93E0CA8038330DE95A7DEFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EFB142389A31DF7B366B55D94218C7E8</key>
+		<key>E7C04D9C660E74C452B91C3C490F5F98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F45E0E8B1DFEE757895D598EE09EF28A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

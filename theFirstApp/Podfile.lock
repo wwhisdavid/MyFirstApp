@@ -20,6 +20,9 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.5.7):
     - MMDrawerController/Core
+  - ZXingObjC (3.1.0):
+    - ZXingObjC/All (= 3.1.0)
+  - ZXingObjC/All (3.1.0)
 
 DEPENDENCIES:
   - FMDB (~> 2.5)
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - MJExtension (~> 2.5.2)
   - MJRefresh (~> 2.3.2)
   - MMDrawerController (~> 0.5.7)
+  - ZXingObjC (~> 3.0)
 
 SPEC CHECKSUMS:
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
@@ -36,5 +40,6 @@ SPEC CHECKSUMS:
   MJExtension: 73e812aca0846e4a7b4d7aca34cfacf48d1f3310
   MJRefresh: 0f6f5e8387970607c26080b44058b229a23065d7
   MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
+  ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.38.0

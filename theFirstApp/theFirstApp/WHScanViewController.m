@@ -9,6 +9,7 @@
 
 #import "WHScanViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "MBProgressHUD.h"
 
 @interface DyScannerViewController ()
 
@@ -35,7 +36,7 @@
 - (UIView *)scanBgView
 {
     if (!_scanBgView) {
-        CGFloat scanBgViewY = IOS7_OR_LATER ? 64.f : 44.f;
+        CGFloat scanBgViewY = 64.f;
         CGFloat scanBgViewH = _toolView.frame.origin.y - scanBgViewY;
         _scanBgView = [[UIView alloc] initWithFrame:CGRectMake(0.f, scanBgViewY, self.view.frame.size.width, scanBgViewH)];
         _scanBgView.backgroundColor = [UIColor clearColor];
@@ -175,9 +176,8 @@
     [self setEnableScanAnimation:YES];
     [self updateCaptureLayout];
     
-    if (IOS7_OR_LATER) {
-        [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    }
+    [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -190,11 +190,8 @@
     
     _backgroundImage = [[UINavigationBar appearance] backgroundImageForBarMetrics:UIBarMetricsDefault];
     
-    if (IOS7_OR_LATER) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    } else {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
-    }
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -321,7 +318,7 @@
         
         ZXMultiFormatReader *reader = [ZXMultiFormatReader reader];
         
-        [MBProgressHUD showDurationProgressHUDWithMessage:NSLocalizedString(@"正在处理...", nil)];
+        [MBProgressHUD showDurationProgressHUDWithMessage:];
         
         ZXResult *result = [reader decode:bitmap
                                     hints:hints
