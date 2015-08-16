@@ -11,6 +11,13 @@
 		721084681B61273100A58374 /* WHWeatherNetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 721084671B61273100A58374 /* WHWeatherNetworkingTool.m */; };
 		7210846E1B61348A00A58374 /* WHWeatherResposeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210846D1B61348A00A58374 /* WHWeatherResposeEntity.m */; };
 		722078BF1B6121E2003B3011 /* WHWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 722078BE1B6121E2003B3011 /* WHWeather.m */; };
+		7222B5181B807D520056FA38 /* MBProgressHUD+wwh.m in Sources */ = {isa = PBXBuildFile; fileRef = 7222B5171B807D520056FA38 /* MBProgressHUD+wwh.m */; };
+		7222B51C1B80816C0056FA38 /* WHLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7222B51B1B80816C0056FA38 /* WHLocationManager.m */; };
+		7222B5231B8082FD0056FA38 /* WHAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7222B5221B8082FD0056FA38 /* WHAnnotation.m */; };
+		7222B5261B8086B50056FA38 /* mapback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7222B5241B8086B50056FA38 /* mapback@2x.png */; };
+		7222B5271B8086B50056FA38 /* mapdingwei@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7222B5251B8086B50056FA38 /* mapdingwei@2x.png */; };
+		7222B52C1B8089630056FA38 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7222B52B1B8089630056FA38 /* CoreLocation.framework */; };
+		7222B52F1B808A4D0056FA38 /* CLLocation+wwh.m in Sources */ = {isa = PBXBuildFile; fileRef = 7222B52E1B808A4D0056FA38 /* CLLocation+wwh.m */; };
 		725C55F91B63B536007396B7 /* WHWeatherCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 725C55F81B63B536007396B7 /* WHWeatherCity.m */; };
 		725C55FC1B63B683007396B7 /* WHAddWeatherCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725C55FB1B63B683007396B7 /* WHAddWeatherCityViewController.m */; };
 		7268E50B1B5FEC0600846C93 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268E50A1B5FEC0600846C93 /* libsqlite3.dylib */; };
@@ -217,6 +224,17 @@
 		7210846D1B61348A00A58374 /* WHWeatherResposeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherResposeEntity.m; sourceTree = "<group>"; };
 		722078BD1B6121E2003B3011 /* WHWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeather.h; sourceTree = "<group>"; };
 		722078BE1B6121E2003B3011 /* WHWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeather.m; sourceTree = "<group>"; };
+		7222B5161B807D520056FA38 /* MBProgressHUD+wwh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+wwh.h"; sourceTree = "<group>"; };
+		7222B5171B807D520056FA38 /* MBProgressHUD+wwh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+wwh.m"; sourceTree = "<group>"; };
+		7222B51A1B80816C0056FA38 /* WHLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHLocationManager.h; sourceTree = "<group>"; };
+		7222B51B1B80816C0056FA38 /* WHLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHLocationManager.m; sourceTree = "<group>"; };
+		7222B5211B8082FD0056FA38 /* WHAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHAnnotation.h; sourceTree = "<group>"; };
+		7222B5221B8082FD0056FA38 /* WHAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHAnnotation.m; sourceTree = "<group>"; };
+		7222B5241B8086B50056FA38 /* mapback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapback@2x.png"; sourceTree = "<group>"; };
+		7222B5251B8086B50056FA38 /* mapdingwei@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapdingwei@2x.png"; sourceTree = "<group>"; };
+		7222B52B1B8089630056FA38 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7222B52D1B808A4D0056FA38 /* CLLocation+wwh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+wwh.h"; sourceTree = "<group>"; };
+		7222B52E1B808A4D0056FA38 /* CLLocation+wwh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+wwh.m"; sourceTree = "<group>"; };
 		725C55F71B63B536007396B7 /* WHWeatherCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHWeatherCity.h; sourceTree = "<group>"; };
 		725C55F81B63B536007396B7 /* WHWeatherCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHWeatherCity.m; sourceTree = "<group>"; };
 		725C55FA1B63B683007396B7 /* WHAddWeatherCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHAddWeatherCityViewController.h; sourceTree = "<group>"; };
@@ -431,6 +449,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7222B52C1B8089630056FA38 /* CoreLocation.framework in Frameworks */,
 				E7C3FFB51B7ADDDC00D8AE4E /* AVFoundation.framework in Frameworks */,
 				7268E50B1B5FEC0600846C93 /* libsqlite3.dylib in Frameworks */,
 				37AD137547E1DDE9449592AD /* libPods.a in Frameworks */,
@@ -447,6 +466,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7222B5191B8080F70056FA38 /* Instances */ = {
+			isa = PBXGroup;
+			children = (
+				7222B51A1B80816C0056FA38 /* WHLocationManager.h */,
+				7222B51B1B80816C0056FA38 /* WHLocationManager.m */,
+			);
+			name = Instances;
+			sourceTree = "<group>";
+		};
+		7222B5201B8082E80056FA38 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7222B5211B8082FD0056FA38 /* WHAnnotation.h */,
+				7222B5221B8082FD0056FA38 /* WHAnnotation.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		7268E50C1B5FEC5C00846C93 /* ToolClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +498,7 @@
 		73116FC5AFB178BDB69DD706 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7222B52B1B8089630056FA38 /* CoreLocation.framework */,
 				E7C3FFB41B7ADDDC00D8AE4E /* AVFoundation.framework */,
 				7268E50A1B5FEC0600846C93 /* libsqlite3.dylib */,
 				48D05B106A7A6D29B275AAC2 /* libPods.a */,
@@ -651,6 +689,8 @@
 		E7CC317B1B5F3FFD00E5A5D1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7222B5241B8086B50056FA38 /* mapback@2x.png */,
+				7222B5251B8086B50056FA38 /* mapdingwei@2x.png */,
 				E7C3FFA91B7ADC2A00D8AE4E /* Scanning */,
 				E7CC32451B5F721C00E5A5D1 /* NavigationBar */,
 				E7CC31971B5F656900E5A5D1 /* TabBar */,
@@ -667,6 +707,7 @@
 		E7CC31881B5F408B00E5A5D1 /* 地图 */ = {
 			isa = PBXGroup;
 			children = (
+				7222B5201B8082E80056FA38 /* Views */,
 				E7CC31891B5F409600E5A5D1 /* Controllers */,
 			);
 			name = "地图";
@@ -684,6 +725,7 @@
 		E7CC318F1B5F4B3100E5A5D1 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7222B5191B8080F70056FA38 /* Instances */,
 				7268E50C1B5FEC5C00846C93 /* ToolClasses */,
 				E7CC31901B5F4B4E00E5A5D1 /* Category */,
 			);
@@ -697,6 +739,10 @@
 				E7CC31921B5F4BD400E5A5D1 /* UIImage+ResizedImage.m */,
 				E7CC31941B5F4D4300E5A5D1 /* UIBarButtonItem+WWH.h */,
 				E7CC31951B5F4D4300E5A5D1 /* UIBarButtonItem+WWH.m */,
+				7222B5161B807D520056FA38 /* MBProgressHUD+wwh.h */,
+				7222B5171B807D520056FA38 /* MBProgressHUD+wwh.m */,
+				7222B52D1B808A4D0056FA38 /* CLLocation+wwh.h */,
+				7222B52E1B808A4D0056FA38 /* CLLocation+wwh.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1516,6 +1562,7 @@
 				E7CC320A1B5F656900E5A5D1 /* tabbar_compose_button_highlighted_os7@2x.png in Resources */,
 				E7CC32C11B5F721C00E5A5D1 /* navigationbar_back.png in Resources */,
 				E7CC32FC1B5F721C00E5A5D1 /* navigationbar_pop_highlighted.png in Resources */,
+				7222B5261B8086B50056FA38 /* mapback@2x.png in Resources */,
 				E7CC32201B5F656900E5A5D1 /* tabbar_discover_selected_os7@2x.png in Resources */,
 				E7CC32D71B5F721C00E5A5D1 /* navigationbar_button_send_background.png in Resources */,
 				E7CC31FC1B5F656900E5A5D1 /* main_badge.png in Resources */,
@@ -1585,6 +1632,7 @@
 				E7CC31FF1B5F656900E5A5D1 /* main_badge_os7@2x.png in Resources */,
 				E7CC32DA1B5F721C00E5A5D1 /* navigationbar_button_send_background_disabled.png in Resources */,
 				E7CC32F91B5F721C00E5A5D1 /* navigationbar_pop.png in Resources */,
+				7222B5271B8086B50056FA38 /* mapdingwei@2x.png in Resources */,
 				E7CC32EA1B5F721C00E5A5D1 /* Contents.json in Resources */,
 				E7CC32061B5F656900E5A5D1 /* Contents.json in Resources */,
 				E7CC320D1B5F656900E5A5D1 /* Contents.json in Resources */,
@@ -1654,6 +1702,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7CC314D1B5F278C00E5A5D1 /* WHTabBarButton.m in Sources */,
+				7222B5181B807D520056FA38 /* MBProgressHUD+wwh.m in Sources */,
 				E7CC31771B5F3B4A00E5A5D1 /* WHWeatherViewController.m in Sources */,
 				E7CC31931B5F4BD400E5A5D1 /* UIImage+ResizedImage.m in Sources */,
 				E7CC31431B5F221000E5A5D1 /* WHTabBarViewController.m in Sources */,
@@ -1664,7 +1713,10 @@
 				7268E50F1B5FEC8E00846C93 /* WHWeatherDBTool.m in Sources */,
 				7210846E1B61348A00A58374 /* WHWeatherResposeEntity.m in Sources */,
 				722078BF1B6121E2003B3011 /* WHWeather.m in Sources */,
+				7222B52F1B808A4D0056FA38 /* CLLocation+wwh.m in Sources */,
 				E7C791961B635ED200F02480 /* WHBaseTableViewCell.m in Sources */,
+				7222B5231B8082FD0056FA38 /* WHAnnotation.m in Sources */,
+				7222B51C1B80816C0056FA38 /* WHLocationManager.m in Sources */,
 				721084681B61273100A58374 /* WHWeatherNetworkingTool.m in Sources */,
 				E7CC31961B5F4D4300E5A5D1 /* UIBarButtonItem+WWH.m in Sources */,
 				E7CC314A1B5F233600E5A5D1 /* WHTabBar.m in Sources */,

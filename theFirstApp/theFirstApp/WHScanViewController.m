@@ -2,22 +2,23 @@
 //  WHScanViewController.m
 //  theFirstApp
 //
-//  Created by deyi on 15/7/22.
-//  Copyright (c) 2015年 deyi. All rights reserved.
+//  Created by david on 15/7/22.
+//  Copyright (c) 2015年 david. All rights reserved.
 //
 
 
 #import "WHScanViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import "MBProgressHUD.h"
+#import "MBProgressHUD+wwh.h"
+#import "Masonry.h"
 
-@interface DyScannerViewController ()
+@interface WHScanViewController ()
 
 - (void)updateCaptureLayout;
 
 @end
 
-@implementation DyScannerViewController
+@implementation WHScanViewController
 
 
 #pragma mark - getter and setter
@@ -191,7 +192,7 @@
     _backgroundImage = [[UINavigationBar appearance] backgroundImageForBarMetrics:UIBarMetricsDefault];
     
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -318,14 +319,14 @@
         
         ZXMultiFormatReader *reader = [ZXMultiFormatReader reader];
         
-        [MBProgressHUD showDurationProgressHUDWithMessage:];
+        [MBProgressHUD showMessage:@"正在处理"];
         
         ZXResult *result = [reader decode:bitmap
                                     hints:hints
                                     error:&error];
         
         if (result) {
-            [MBProgressHUD hideDurationProgressHUD];
+            [MBProgressHUD hideHUD];
             // The coded result as a string. The raw data can be accessed with
             // result.rawBytes and result.length.
             NSString *contents = result.text;
@@ -340,31 +341,31 @@
             // not being found, an invalid checksum, or a format inconsistency.
             NSLog(@"%@",error.localizedDescription);
             NSLog(@"%@",error);
-            [MBProgressHUD hideDurationProgressHUDWithFailedMessage:NSLocalizedString(@"扫码失败!", nil)];
+            [MBProgressHUD showError:@"扫码失败！"];
         }
     }];
 }
 
 #pragma mark - UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == alertView.cancelButtonIndex) {
-        [self performSelector:@selector(startScan) withObject:nil afterDelay:0.5];
-    } else {
-        if (alertView.tag == 1000) { // 是验证码
-            [MBProgressHUD showDurationProgressHUDWithMessage:NSLocalizedString(@"正在处理...", nil)];
-            [self userCodeWithCode:self.scanResult success:^(NSString *message) {
-                [MBProgressHUD hideDurationProgressHUDWithSuccessfulMessage:message];
-                [self performSelector:@selector(startScan) withObject:nil afterDelay:2.0];
-            } failure:^(NSString *message) {
-                [MBProgressHUD hideDurationProgressHUDWithFailedMessage:message];
-                [self performSelector:@selector(startScan) withObject:nil afterDelay:2.0];
-            }];
-        } else {
-        }
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex == alertView.cancelButtonIndex) {
+//        [self performSelector:@selector(startScan) withObject:nil afterDelay:0.5];
+//    } else {
+//        if (alertView.tag == 1000) { // 是验证码
+//            [MBProgressHUD showMessage:@"正在处理"];
+//            [self userCodeWithCode:self.scanResult success:^(NSString *message) {
+//                [MBProgressHUD hideHUD];
+//                [self performSelector:@selector(startScan) withObject:nil afterDelay:2.0];
+//            } failure:^(NSString *message) {
+//                [MBProgressHUD hideHUD];
+//                [self performSelector:@selector(startScan) withObject:nil afterDelay:2.0];
+//            }];
+//        } else {
+//        }
+//    }
+//}
 
 #pragma mark - private
 
@@ -389,6 +390,7 @@
 }
 
 
+
 - (void)updateCaptureLayout
 {
     _capture.layer.frame = self.view.bounds;
@@ -411,13 +413,13 @@
         UIImageView *animateImageView = (UIImageView *)[_scanRectView viewWithTag:100];
         {
             [UIView animateWithDuration:2.0 animations:^{
-                [animateImageView setNewY:(_scanRectView.frame.size.height - animateImageView.frame.size.height - 4.f)];
+//                [animateImageView setNewY:(_scanRectView.frame.size.height - animateImageView.frame.size.height - 4.f)];
             } completion:^(BOOL finished) {
                 if (!_enableScanAnimation) {
                     [self performSelector:@selector(startScanAnimation) withObject:nil afterDelay:2.0];
                 } else {
                     [UIView animateWithDuration:2.0 animations:^{
-                        [animateImageView setNewY:4.f];
+//                        [animateImageView setNewY:4.f];
                     } completion:^(BOOL finished) {
                         [self startScanAnimation];
                     }];

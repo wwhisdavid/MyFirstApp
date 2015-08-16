@@ -3,7 +3,7 @@
 //  theFirstApp
 //
 //  Created by david on 15/7/22.
-//  Copyright (c) 2015年 deyi. All rights reserved.
+//  Copyright (c) 2015年 david. All rights reserved.
 //
 
 #import "WHWeatherDBTool.h"
@@ -20,18 +20,19 @@ static FMDatabase *_db;
 {
     //1.打开数据库
     NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"weathers.sqlite"];
-    WHLog(@"%@-----------------",path);
+    WHLog(@"%@--------weathers.sqlite-path--------",path);
     _db = [FMDatabase databaseWithPath:path];
     [_db open];
     
     //2.创表
-    [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_weather(id integer PRIMARY KEY, string text NOT NULL);"];
+    [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_weather(id integer PRIMARY KEY, string text NOT NULL, cityname text);"];
 }
 
-+ (void)addWeatherJSONStr:(NSString *)JSONStr
++ (void)addWeatherJSONStr:(NSString *)JSONStr andCityName:(NSString *)cityName
 {
-    [_db executeUpdateWithFormat:@"INSERT INTO t_weather(string) VALUES (%@);",JSONStr];
+    [_db executeUpdateWithFormat:@"INSERT INTO t_weather(string,cityname) VALUES (%@,%@);",JSONStr,cityName];
 }
+
 
 + (void)deleteWeatherJSONStrWithID:(NSString *)ID
 {

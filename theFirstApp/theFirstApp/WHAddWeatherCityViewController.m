@@ -3,11 +3,13 @@
 //  theFirstApp
 //
 //  Created by david on 15/7/25.
-//  Copyright (c) 2015年 deyi. All rights reserved.
+//  Copyright (c) 2015年 david. All rights reserved.
 //
 
 #import "WHAddWeatherCityViewController.h"
 #import "Masonry.h"
+#import "MBProgressHUD+wwh.h"
+#import "WHWeatherCity.h"
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
@@ -27,6 +29,12 @@
     [super viewDidLoad];
     
     [self initViewController];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_cityTextField becomeFirstResponder];
 }
 
 - (void)dealloc
@@ -156,8 +164,19 @@
 
 - (void)sureBtnClick
 {
-    WHLog(@"--------------");
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (self.cityTextField == nil) {
+        [MBProgressHUD showError:@"请输入城市名！"];
+        return;
+    }
+//    else if (){
+//    
+//    }
+    [self.navigationController popViewControllerAnimated:YES];
+    if([self.delegate respondsToSelector:@selector(addWeatherCityViewController:didAddCity:)]){
+        WHWeatherCity *city = [[WHWeatherCity alloc] init];
+        city.name = self.cityTextField.text;
+        [self.delegate addWeatherCityViewController:self didAddCity:city];
+    }    
 }
 
 #pragma mark - lazy load

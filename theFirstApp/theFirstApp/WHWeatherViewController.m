@@ -2,8 +2,8 @@
 //  WHWeatherViewController.m
 //  theFirstApp
 //
-//  Created by deyi on 15/7/22.
-//  Copyright (c) 2015年 deyi. All rights reserved.
+//  Created by david on 15/7/22.
+//  Copyright (c) 2015年 david. All rights reserved.
 //
 
 #import "WHWeatherViewController.h"
@@ -14,11 +14,12 @@
 #import "WHWeather.h"
 #import "WHWeatherCell.h"
 #import "MJRefresh.h"
+#import "WHAddWeatherCityViewController.h"
 
 // 文件路径
 #define WHWeatherCityFilepath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"weatherCities.data"]
 
-@interface WHWeatherViewController()
+@interface WHWeatherViewController() <WHAddWeatherCityViewControllerDelegate>
 
 /**
  *  存放天气模型的数组
@@ -86,16 +87,17 @@
 - (void)testScanf
 {
     [WHWeatherDBTool initialize];
-    NSString *httpUrl = @"http://apis.baidu.com/apistore/weatherservice/weather";
-    NSString *httpArg = @"citypinyin=wuhan";
+    NSString *httpUrl = @"http://apis.baidu.com/apistore/weatherservice/cityname";
+    NSString *cityName = @"武汉";
+    NSString *utf8 = [cityName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *httpArg = [NSString stringWithFormat:@"cityname=%@", utf8];
+    
     WHWeatherNetworkingTool *tool = [[WHWeatherNetworkingTool alloc] init];
 
-    
-//    dispatch_queue_t q = dispatch_queue_create("weather queue", DISPATCH_QUEUE_CONCURRENT);
-//    dispatch_async(q, ^{
     NSString *JSONStr = [NSString string];
     JSONStr = [tool JSONStrWithRequest:httpUrl andHttpArg:httpArg];
-//    });
+
+
     
     WHWeatherDBTool *DBtool = [[WHWeatherDBTool alloc] init];
     NSArray *array = [NSArray array];
@@ -169,6 +171,11 @@
     return cell;
 }
 
+#pragma mark - WHAddWeatherCityViewControllerDelegate
 
+- (void)addWeatherCityViewController:(WHAddWeatherCityViewController *)addVc didAddCity:(WHWeatherCity *)weatherCity
+{
+    [NSKeyedArchiver archiveRootObject:weatherCity toFile:WHWeatherCityFilepath];
+}
 
 @end
