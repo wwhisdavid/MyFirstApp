@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "MBProgressHUD+wwh.h"
 #import "WHWeatherCity.h"
+#import "WHWeatherNetworkingTool.h"
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
@@ -164,13 +165,12 @@
 
 - (void)sureBtnClick
 {
-    if (self.cityTextField == nil) {
+    if (self.cityTextField.text.length == 0) {
         [MBProgressHUD showError:@"请输入城市名！"];
         return;
     }
-//    else if (){
-//    
-//    }
+    WHWeatherNetworkingTool *tool = [[WHWeatherNetworkingTool alloc] init];
+    
     [self.navigationController popViewControllerAnimated:YES];
     if([self.delegate respondsToSelector:@selector(addWeatherCityViewController:didAddCity:)]){
         WHWeatherCity *city = [[WHWeatherCity alloc] init];

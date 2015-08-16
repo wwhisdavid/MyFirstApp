@@ -32,6 +32,7 @@
 #import "WHWeatherDBTool.h"
 #import "MBProgressHUD+wwh.h"
 
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 @implementation WHWeatherNetworkingTool
 
 - (NSString *)JSONStrWithRequest:(NSString *)httpUrl andHttpArg:(NSString *)httpArg
@@ -133,4 +134,34 @@
  weather = "\U591a\U4e91";
  }
 */
+
+- (NSInteger)canQueryTheCity:(NSString *)cityName
+{
+    NSString *httpUrl = @"http://apis.baidu.com/apistore/weatherservice/citylist";
+    NSString *utf8Str = [cityName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *httpArg = [NSString stringWithFormat:@"cityname=%@", utf8Str];
+    NSString *urlStr = [[NSString alloc] initWithFormat: @"%@?%@", httpUrl, httpArg];
+    NSURL *url = [NSURL URLWithString: urlStr];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
+    [request setHTTPMethod: @"GET"];
+    [request addValue: @"5d3bf69215c9a2c4265d8dddd000f0d7" forHTTPHeaderField: @"apikey"];
+    [MBProgressHUD showMessage:@"正在帮您查询...."];
+    WS(ws);
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:data
+                                                                   options:NSJSONReadingMutableLeaves
+                                                                     error:nil];
+        if (returnDict[@"errNum"] != 0) {
+            NSString *errorMsg = returnDict[@"errMsg"];
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:errorMsg];
+            ws.canQuery = 1;
+        }
+        else{
+            ws.canQuery = 2;
+            [MBProgressHUD hideHUD];
+        }
+    }];
+    return 0;
+}
 @end
