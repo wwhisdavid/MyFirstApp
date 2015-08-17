@@ -151,15 +151,15 @@
         NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:data
                                                                    options:NSJSONReadingMutableLeaves
                                                                      error:nil];
+        [MBProgressHUD hideHUD];
         if (returnDict[@"errNum"] != 0) {
             NSString *errorMsg = returnDict[@"errMsg"];
-            [MBProgressHUD hideHUD];
             [MBProgressHUD showError:errorMsg];
             ws.canQuery = 1;
         }
         else{
             ws.canQuery = 2;
-            [MBProgressHUD hideHUD];
+            
         }
     }];
     return 0;

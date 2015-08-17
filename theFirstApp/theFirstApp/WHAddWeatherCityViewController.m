@@ -170,6 +170,11 @@
         return;
     }
     WHWeatherNetworkingTool *tool = [[WHWeatherNetworkingTool alloc] init];
+    [tool canQueryTheCity:self.cityTextField.text];
+    if (tool.canQuery == 1) {
+        return;
+    }
+    else if(tool.canQuery == 0)
     
     [self.navigationController popViewControllerAnimated:YES];
     if([self.delegate respondsToSelector:@selector(addWeatherCityViewController:didAddCity:)]){
