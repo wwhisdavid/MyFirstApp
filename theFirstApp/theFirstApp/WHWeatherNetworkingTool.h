@@ -7,13 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+@class WHWeatherNetworkingTool;
+@protocol WHWeatherNetworkingToolDelegate <NSObject>
+
+@optional
+- (void)weatherNetworkingTool:(WHWeatherNetworkingTool *)weatherNetworkingTool callbackWithCanQuery:(NSInteger)canQuery;
+
+@end
 
 @interface WHWeatherNetworkingTool : NSObject
 
 
 //@property (nonatomic , copy) NSMutableString *JSONStr;
 @property (nonatomic, assign) NSInteger canQuery;
-
+@property (nonatomic, weak) id<WHWeatherNetworkingToolDelegate> delegate;
 /**
  *  提供一个方法，传入url，发送网络请求给对应的天气服务器，得到JSON并转换为字符串
  */
@@ -28,4 +35,6 @@
  *  提供一个方法，传入城市名，得到是否能够查询
  */
 - (NSInteger)canQueryTheCity:(NSString *)cityName;
+
+
 @end

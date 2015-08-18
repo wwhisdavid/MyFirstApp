@@ -31,6 +31,7 @@
 #import "WHWeatherNetworkingTool.h"
 #import "WHWeatherDBTool.h"
 #import "MBProgressHUD+wwh.h"
+#import <CoreFoundation/CoreFoundation.h>
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 @implementation WHWeatherNetworkingTool
@@ -145,22 +146,33 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
     [request setHTTPMethod: @"GET"];
     [request addValue: @"5d3bf69215c9a2c4265d8dddd000f0d7" forHTTPHeaderField: @"apikey"];
-    [MBProgressHUD showMessage:@"正在帮您查询...."];
+    
     WS(ws);
+    [MBProgressHUD showMessage:@"正在帮您查询...."];
+    WHLog(@"%@", [NSThread currentThread]);
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:data
                                                                    options:NSJSONReadingMutableLeaves
                                                                      error:nil];
-        [MBProgressHUD hideHUD];
-        if (returnDict[@"errNum"] != 0) {
+
+        NSString *retuenErrorNum = [NSString stringWithFormat:@"%@", returnDict[@"errNum"] ];
+        if (![retuenErrorNum isEqualToString:@"0"]) {
+            WHLog(@"%@", returnDict[@"errNum"]);
             NSString *errorMsg = returnDict[@"errMsg"];
             [MBProgressHUD showError:errorMsg];
-            ws.canQuery = 1;
+            ws.canQuery = 1;//发送请求有误
+            if ([self.delegate respondsToSelector:@selector(weatherNetworkingTool:callbackWithCanQuery:)]) {
+                [self.delegate weatherNetworkingTool:self callbackWithCanQuery:ws.canQuery];
+            }
         }
         else{
-            ws.canQuery = 2;
-            
+            ws.canQuery = 2;//接收成功
+            if ([self.delegate respondsToSelector:@selector(weatherNetworkingTool:callbackWithCanQuery:)]) {
+                [self.delegate weatherNetworkingTool:self callbackWithCanQuery:ws.canQuery];
+            }
         }
+        [MBProgressHUD hideHUD];
     }];
     return 0;
 }

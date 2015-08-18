@@ -12,12 +12,14 @@
 #import "WHWeatherCity.h"
 #import "WHWeatherNetworkingTool.h"
 
+
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
 
-@interface WHAddWeatherCityViewController()
+@interface WHAddWeatherCityViewController() <WHWeatherNetworkingToolDelegate>
 
 @property (nonatomic, strong) NSMutableArray *animateConstaints;
+@property (nonatomic, strong) WHWeatherNetworkingTool *tool;
 
 @end
 
@@ -165,31 +167,72 @@
 
 - (void)sureBtnClick
 {
-    if (self.cityTextField.text.length == 0) {
+        if (self.cityTextField.text.length == 0) {
+        
         [MBProgressHUD showError:@"请输入城市名！"];
+        
         return;
     }
-    WHWeatherNetworkingTool *tool = [[WHWeatherNetworkingTool alloc] init];
-    [tool canQueryTheCity:self.cityTextField.text];
-    if (tool.canQuery == 1) {
-        return;
-    }
-    else if(tool.canQuery == 0)
     
-    [self.navigationController popViewControllerAnimated:YES];
-    if([self.delegate respondsToSelector:@selector(addWeatherCityViewController:didAddCity:)]){
-        WHWeatherCity *city = [[WHWeatherCity alloc] init];
-        city.name = self.cityTextField.text;
-        [self.delegate addWeatherCityViewController:self didAddCity:city];
-    }    
+    
+    
+    [self.tool canQueryTheCity:self.cityTextField.text];
+    
+//    WHLog(@"%@", [NSThread currentThread]);
+//    if (self.tool.canQuery == 1) {
+//        
+//        return;
+//    }
+//    else if(self.tool.canQuery == 0){
+//
+//        return;
+//    }
+//    
+//    [self.navigationController popViewControllerAnimated:YES];
+//    if([self.delegate respondsToSelector:@selector(addWeatherCityViewController:didAddCity:)]){
+//        WHWeatherCity *city = [[WHWeatherCity alloc] init];
+//        city.name = self.cityTextField.text;
+//        [self.delegate addWeatherCityViewController:self didAddCity:city];
+//    }    
 }
 
 #pragma mark - lazy load
+
 - (NSMutableArray *)animateConstaints
 {
     if (_animateConstaints == nil) {
         _animateConstaints = [NSMutableArray array];
     }
     return _animateConstaints;
+}
+
+- (WHWeatherNetworkingTool *)tool
+{
+    if (_tool == nil) {
+        _tool = [[WHWeatherNetworkingTool alloc] init];
+        _tool.delegate = self;
+    }
+    return _tool;
+}
+
+#pragma mark -
+
+- (void)weatherNetworkingTool:(WHWeatherNetworkingTool *)weatherNetworkingTool callbackWithCanQuery:(NSInteger)canQuery
+{
+    if (self.tool.canQuery == 1) {
+        
+        return;
+    }
+    else if(self.tool.canQuery == 0){
+        
+        return;
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    if([self.delegate respondsToSelector:@selector(addWeatherCityViewController:didAddCity:)]){
+        WHWeatherCity *city = [[WHWeatherCity alloc] init];
+        city.name = self.cityTextField.text;
+        [self.delegate addWeatherCityViewController:self didAddCity:city];
+    }
 }
 @end
