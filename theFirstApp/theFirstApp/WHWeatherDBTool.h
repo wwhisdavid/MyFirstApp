@@ -23,21 +23,33 @@
 + (void)addWeatherJSONStr:(NSString *)JSONStr andCityName:(NSString *)cityName;
 
 /**
- *  提供方法传入JSONStr数组，返回对应对象
+ *  提供方法传入JSONStr数组，返回对应对象数组
  */
-- (WHWeather *)weather:(NSArray *)JSONStrArray;
+- (NSMutableArray *)weather:(NSArray *)JSONStrArray;
 
 /**
- *  删除一条数据
+ *  删除一条天气数据
  */
 + (void)deleteWeatherJSONStrWithID:(NSString *)ID;
+
+/**
+ *  删除一条城市名数据
+ */
++ (void)deleteWeatherCityNameID:(NSString *)ID;
 
 /**
  *  关闭数据库
  */
 - (void)closeDB;
 
+/**
+ *  存储城市列表
+ */
++ (void)addWeatherName:(NSString *)name;
 
-
+/**
+ *  获得所以城市
+ */
++ (NSArray *)getAllCitiesName;
 @end
 

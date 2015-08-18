@@ -43,7 +43,7 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"GET"];
     [request addValue:@"5d3bf69215c9a2c4265d8dddd000f0d7" forHTTPHeaderField:@"apikey"];
-    
+                        
     __block NSMutableString *str = nil;
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -164,6 +164,7 @@
             ws.canQuery = 1;//发送请求有误
             if ([self.delegate respondsToSelector:@selector(weatherNetworkingTool:callbackWithCanQuery:)]) {
                 [self.delegate weatherNetworkingTool:self callbackWithCanQuery:ws.canQuery];
+                
             }
         }
         else{
@@ -172,7 +173,7 @@
                 [self.delegate weatherNetworkingTool:self callbackWithCanQuery:ws.canQuery];
             }
         }
-        [MBProgressHUD hideHUD];
+        
     }];
     return 0;
 }

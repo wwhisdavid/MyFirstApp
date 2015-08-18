@@ -15,6 +15,7 @@
 #import "WHWeatherCell.h"
 #import "MJRefresh.h"
 #import "WHAddWeatherCityViewController.h"
+#import "MBProgressHUD+wwh.h"
 
 // 文件路径
 #define WHWeatherCityFilepath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"weatherCities.data"]
@@ -63,6 +64,7 @@
 - (void)addClick
 {
     WHAddWeatherCityViewController *addVc = [[WHAddWeatherCityViewController alloc] init];
+    addVc.delegate = self;
     [self.navigationController pushViewController:addVc animated:YES];
     self.tabBarController.tabBar.hidden = YES;
 }
@@ -79,6 +81,7 @@
  */
 - (void)didRefresh
 {
+    [self testScanf];
     [self.tableView reloadData];
     [self.tableView.header endRefreshing];
 }
@@ -88,22 +91,28 @@
 {
     [WHWeatherDBTool initialize];
     NSString *httpUrl = @"http://apis.baidu.com/apistore/weatherservice/cityname";
-    NSString *cityName = @"武汉";
-    NSString *utf8 = [cityName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *httpArg = [NSString stringWithFormat:@"cityname=%@", utf8];
+    NSArray *cityNames = [WHWeatherDBTool getAllCitiesName];
+    if (cityNames.count == 0) {
+        [MBProgressHUD showError:@"无选中城市，请添加!"];
+        return;
+    }
     
     WHWeatherNetworkingTool *tool = [[WHWeatherNetworkingTool alloc] init];
-
-    NSString *JSONStr = [NSString string];
-    JSONStr = [tool JSONStrWithRequest:httpUrl andHttpArg:httpArg];
-
-
-    
     WHWeatherDBTool *DBtool = [[WHWeatherDBTool alloc] init];
     NSArray *array = [NSArray array];
+
+    for (NSString *cityName in cityNames) {
+        NSString *utf8 = [cityName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *httpArg = [NSString stringWithFormat:@"cityname=%@", utf8];
+        
+        NSString *JSONStr = [NSString string];
+        JSONStr = [tool JSONStrWithRequest:httpUrl andHttpArg:httpArg];
+    }
+    
     array = [DBtool weathers];
-    WHWeather *weather = [[WHWeather alloc] init];
-    weather = [DBtool weather:array];
+    
+
+    self.weatherArray = [NSMutableArray arrayWithArray:[DBtool weathers]];
     [DBtool closeDB];
     
     
@@ -113,8 +122,11 @@
 
 - (NSMutableArray *)weatherArray
 {
-    WHWeatherDBTool *DBTool = [[WHWeatherDBTool alloc] init];
-    _weatherArray = [NSMutableArray arrayWithArray:[DBTool weathers]];
+    if (_weatherArray == nil) {
+        _weatherArray = [[NSMutableArray alloc] init];
+    }
+//    WHWeatherDBTool *DBTool = [[WHWeatherDBTool alloc] init];
+//    _weatherArray = [NSMutableArray arrayWithArray:[DBTool weathers]];
     return _weatherArray;
 }
 
@@ -138,6 +150,7 @@
         [_weatherArray removeObjectAtIndex:indexPath.row];
         NSString *str = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
         [WHWeatherDBTool deleteWeatherJSONStrWithID:str];
+        [WHWeatherDBTool deleteWeatherCityNameID:str];
         
         //2.刷新表格（局部）
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
@@ -173,9 +186,9 @@
 
 #pragma mark - WHAddWeatherCityViewControllerDelegate
 
-- (void)addWeatherCityViewController:(WHAddWeatherCityViewController *)addVc didAddCity:(WHWeatherCity *)weatherCity
+- (void)addWeatherCityViewController:(WHAddWeatherCityViewController *)addVc didAddCityName:(NSString *)name
 {
-    [NSKeyedArchiver archiveRootObject:weatherCity toFile:WHWeatherCityFilepath];
+    [WHWeatherDBTool addWeatherName:name];
 }
 
 @end

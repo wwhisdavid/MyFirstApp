@@ -215,24 +215,25 @@
     return _tool;
 }
 
-#pragma mark -
+#pragma mark - delegate
 
 - (void)weatherNetworkingTool:(WHWeatherNetworkingTool *)weatherNetworkingTool callbackWithCanQuery:(NSInteger)canQuery
 {
+    [MBProgressHUD hideHUD];
     if (self.tool.canQuery == 1) {
-        
+        [MBProgressHUD showError:@"暂时不支持该城市！"];
         return;
     }
     else if(self.tool.canQuery == 0){
         
+        [MBProgressHUD showError:@"网络错误！"];
         return;
     }
     
     [self.navigationController popViewControllerAnimated:YES];
-    if([self.delegate respondsToSelector:@selector(addWeatherCityViewController:didAddCity:)]){
-        WHWeatherCity *city = [[WHWeatherCity alloc] init];
-        city.name = self.cityTextField.text;
-        [self.delegate addWeatherCityViewController:self didAddCity:city];
+    if([self.delegate respondsToSelector:@selector(addWeatherCityViewController:didAddCityName:)]){
+
+        [self.delegate addWeatherCityViewController:self didAddCityName:self.cityTextField.text];
     }
 }
 @end

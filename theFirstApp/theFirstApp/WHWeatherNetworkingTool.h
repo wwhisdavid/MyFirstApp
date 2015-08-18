@@ -11,6 +11,7 @@
 @protocol WHWeatherNetworkingToolDelegate <NSObject>
 
 @optional
+
 - (void)weatherNetworkingTool:(WHWeatherNetworkingTool *)weatherNetworkingTool callbackWithCanQuery:(NSInteger)canQuery;
 
 @end

@@ -14,7 +14,7 @@
 
 @optional
 
-- (void)addWeatherCityViewController:(WHAddWeatherCityViewController *)addVc didAddCity:(WHWeatherCity *)weatherCity;
+- (void)addWeatherCityViewController:(WHAddWeatherCityViewController *)addVc didAddCityName:(NSString *)name;
 
 @end
 
