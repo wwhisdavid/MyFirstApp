@@ -38,7 +38,7 @@
 {
     if (!_scanBgView) {
         CGFloat scanBgViewY = 64.f;
-        CGFloat scanBgViewH = _toolView.frame.origin.y - scanBgViewY;
+        CGFloat scanBgViewH = _toolView.frame.origin.y - scanBgViewY + 44;
         _scanBgView = [[UIView alloc] initWithFrame:CGRectMake(0.f, scanBgViewY, self.view.frame.size.width, scanBgViewH)];
         _scanBgView.backgroundColor = [UIColor clearColor];
         _scanBgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -80,7 +80,7 @@
             CAShapeLayer *fillLayer = [CAShapeLayer layer];
             fillLayer.path = path.CGPath;
             fillLayer.fillRule = kCAFillRuleEvenOdd;
-            fillLayer.fillColor = [UIColor colorWithWhite:0.0 alpha:0.8].CGColor;
+            fillLayer.fillColor = [UIColor colorWithWhite:0.0 alpha:0.8f].CGColor;
             fillLayer.opacity = 0.5;
             [_scanBgView.layer addSublayer:fillLayer];
         }
@@ -102,7 +102,7 @@
         NSInteger buttonAcount = 2;
         CGFloat buttonW = 50.f;
         CGFloat buttonH = 50.f;
-        CGFloat buttonY = (_toolView.frame.size.height - buttonH) / 2.0;
+        CGFloat buttonY = (_toolView.frame.size.height - buttonH) / 2.0 - 44.f;
         CGFloat buttonSpace = (_toolView.frame.size.width - buttonW * buttonAcount ) / (buttonAcount + 1);
         for (NSInteger index = 0; index < buttonAcount; index ++) {
             CGFloat buttonX = buttonSpace * (index + 1) + buttonW * index;
@@ -348,24 +348,32 @@
 
 #pragma mark - UIAlertViewDelegate
 
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (buttonIndex == alertView.cancelButtonIndex) {
-//        [self performSelector:@selector(startScan) withObject:nil afterDelay:0.5];
-//    } else {
-//        if (alertView.tag == 1000) { // 是验证码
-//            [MBProgressHUD showMessage:@"正在处理"];
-//            [self userCodeWithCode:self.scanResult success:^(NSString *message) {
-//                [MBProgressHUD hideHUD];
-//                [self performSelector:@selector(startScan) withObject:nil afterDelay:2.0];
-//            } failure:^(NSString *message) {
-//                [MBProgressHUD hideHUD];
-//                [self performSelector:@selector(startScan) withObject:nil afterDelay:2.0];
-//            }];
-//        } else {
-//        }
-//    }
-//}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == alertView.cancelButtonIndex) {
+        [self performSelector:@selector(startScan) withObject:nil afterDelay:0.5];
+    } else {
+
+        [MBProgressHUD showMessage:@"正在处理..."];
+        NSLog(@"%@", self.scanResult);
+        if ([self.scanResult hasPrefix:@"http://"]) {
+            UIViewController *vc = [[UIViewController alloc] init];
+
+            UIWebView *webView = [[UIWebView alloc] init];
+            NSURL *url = [NSURL URLWithString:self.scanResult];
+            NSURLRequest *requst = [NSURLRequest requestWithURL:url];
+            [webView loadRequest:requst];
+            [MBProgressHUD hideHUD];
+            webView.frame = vc.view.bounds;
+            [vc.view addSubview:webView];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else{
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showSuccess:@"二维码无法解析。"];
+        }
+    }
+}
 
 #pragma mark - private
 
@@ -393,6 +401,7 @@
 
 - (void)updateCaptureLayout
 {
+//    CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
     _capture.layer.frame = self.view.bounds;
     CGAffineTransform captureSizeTransform = CGAffineTransformMakeScale(320 / self.view.frame.size.width, 480 / self.view.frame.size.height);
     CGRect parentRect = [_scanRectView.superview convertRect:_scanRectView.frame toView:self.view];
@@ -413,13 +422,15 @@
         UIImageView *animateImageView = (UIImageView *)[_scanRectView viewWithTag:100];
         {
             [UIView animateWithDuration:2.0 animations:^{
-//                [animateImageView setNewY:(_scanRectView.frame.size.height - animateImageView.frame.size.height - 4.f)];
+                CGRect temp = CGRectMake(animateImageView.frame.origin.x, (_scanRectView.frame.size.height - animateImageView.frame.size.height - 4.f), animateImageView.frame.size.width, animateImageView.frame.size.height);
+                animateImageView.frame = temp;
             } completion:^(BOOL finished) {
                 if (!_enableScanAnimation) {
                     [self performSelector:@selector(startScanAnimation) withObject:nil afterDelay:2.0];
                 } else {
                     [UIView animateWithDuration:2.0 animations:^{
-//                        [animateImageView setNewY:4.f];
+                            CGRect temp = CGRectMake(animateImageView.frame.origin.x, 4.f, animateImageView.frame.size.width, animateImageView.frame.size.height);
+                            animateImageView.frame = temp;
                     } completion:^(BOOL finished) {
                         [self startScanAnimation];
                     }];

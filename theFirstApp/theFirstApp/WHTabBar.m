@@ -86,7 +86,6 @@
         //3.绑定tag
         button.tag = i;
     }
-    
 }
 
 @end
